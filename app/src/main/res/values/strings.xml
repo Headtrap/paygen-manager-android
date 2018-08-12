@@ -11,4 +11,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error_title">Erro</string>
     <string name="title_success">Sucesso</string>
+    <string name="title_consumption">Consumo</string>
+    <string name="title_add_items">Adicionar itens</string>
+    <string name="error_empty_query">Informe ao menos um uma palavra</string>
 </resources>

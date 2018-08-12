@@ -68,7 +68,6 @@ open class BaseActivity : AppCompatActivity() {
 
     fun handleException(exception: Throwable) {
         exception.printStackTrace()
-        Crashlytics.logException(exception)
         exception.message?.let {
             alert(it, getString(R.string.error_title))
             { yesButton { } }.show()

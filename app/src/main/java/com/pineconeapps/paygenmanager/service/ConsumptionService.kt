@@ -1,6 +1,7 @@
 package com.pineconeapps.paygenmanager.service
 
 import com.pineconeapps.paygenmanager.entity.Consumption
+import com.pineconeapps.paygenmanager.entity.Item
 import com.pineconeapps.paygenmanager.service.endpoint.ConsumptionEndpoint
 import io.reactivex.Observable
 
@@ -10,4 +11,6 @@ object ConsumptionService {
 
     fun getConsumption(customerId: String, providerId: String): Observable<Consumption> =
             service.getConsumption(customerId, providerId)
+
+    fun addItem(providerId: String, customerId: String, itemId: String) = service.addItem(providerId, customerId, itemId)
 }

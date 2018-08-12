@@ -10,8 +10,6 @@ import com.example.gustavobatista.paygen.entity.Lobby
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.activity.ConsumptionActivity
 import com.pineconeapps.paygenmanager.adapter.CustomerAdapter
-import com.pineconeapps.paygenmanager.entity.Consumption
-import com.pineconeapps.paygenmanager.entity.Customer
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.LobbyService
 import kotlinx.android.synthetic.main.fragment_costumer_list.*
@@ -32,9 +30,11 @@ class CostumerListFragment : BaseFragment() {
 
     private fun initViews() {
         recyclerView.layoutManager = LinearLayoutManager(activity)
+        swipeRefresh.setOnRefreshListener { getCustomers() }
     }
 
     private fun getCustomers() {
+        swipeRefresh.isRefreshing = false
         showProgress()
         LobbyService.getCustomers(prefs.providerId).applySchedulers().subscribe(
                 {
@@ -51,10 +51,9 @@ class CostumerListFragment : BaseFragment() {
     }
 
     private fun createAdapter(lobby: Lobby) {
-        val adapter = CustomerAdapter(lobby.customerList){
+        val adapter = CustomerAdapter(lobby.customerList) {
             startActivity<ConsumptionActivity>("customer" to it)
         }
-
         recyclerView.adapter = adapter
     }
 

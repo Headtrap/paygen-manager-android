@@ -9,6 +9,7 @@ import com.pineconeapps.paygenmanager.entity.Customer
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.ConsumptionService
 import kotlinx.android.synthetic.main.activity_consumption.*
+import org.jetbrains.anko.startActivity
 
 class ConsumptionActivity : BaseActivity() {
 
@@ -16,6 +17,8 @@ class ConsumptionActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_consumption)
+        setupActionBar()
+        setupToolbar(R.string.title_consumption)
         customer = intent.getSerializableExtra("customer") as Customer
     }
 
@@ -28,12 +31,15 @@ class ConsumptionActivity : BaseActivity() {
 
     private fun initViews() {
         recyclerView.layoutManager = LinearLayoutManager(this)
+        swipeRefresh.setOnRefreshListener { getConsumption() }
+        fabPay.setOnClickListener { startActivity<AddItemsActivity>("customer" to customer) }
         getConsumption()
     }
 
     private fun getConsumption() {
+        swipeRefresh.isRefreshing = false
         showProgress()
-        ConsumptionService.getConsumption(customerId = customer.id, providerId = prefs.providerId).applySchedulers().subscribe(
+        ConsumptionService.getConsumption(customer.id, prefs.providerId).applySchedulers().subscribe(
                 {
                     createAdapter(it)
                 },
