@@ -14,7 +14,7 @@ class Provider(val type: Type,
                val sales: List<Transaction>,
                val consumptions: List<Consumption>,
                val employees: List<User>,
-               val info: ProviderInfo) : User(){
+               val info: ProviderInfo) : User("", "", "", "", "") {
 
 
     enum class Status {

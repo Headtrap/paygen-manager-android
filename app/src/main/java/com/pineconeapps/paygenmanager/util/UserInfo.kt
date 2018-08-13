@@ -20,7 +20,7 @@ class UserInfo(context: Context) {
     companion object {
         fun saveUserLocally(user: User, google: Boolean) {
             prefs.userEmail = user.email
-            prefs.userId = user.id
+            prefs.token = user.id
             prefs.googleSignIn = google
         }
 
@@ -30,12 +30,12 @@ class UserInfo(context: Context) {
                     .addOnCompleteListener {
                     }
             prefs.userEmail = ""
-            prefs.userId = ""
+            prefs.token = ""
             prefs.googleSignIn = false
         }
     }
 
-    var userId: String
+    var token: String
         get() = prefs.getString(PREF_ID, "5b34409e27039805549d3951")
         set(value) = prefs.edit().putString(PREF_ID, value).apply()
 
