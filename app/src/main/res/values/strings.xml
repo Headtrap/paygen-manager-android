@@ -32,4 +32,18 @@
     <string name="hint_password">Senha</string>
     <string name="hint_email">Email</string>
     <string name="warning_empty_fields">Preencha todos os campos</string>
+    <string name="title_register">Cadastro</string>
+    <string name="label_provider_name">Nome do estabelecimento</string>
+    <string name="label_address">Endreço</string>
+    <string name="label_open_hours">Horário de funcionamento</string>
+    <string name="label_abre">Abre</string>
+    <string name="label_fecha">Fecha</string>
+    <string name="label_monday">SEG</string>
+    <string name="label_tuersday">TER</string>
+    <string name="label_wednesday">QUA</string>
+    <string name="label_tuesday">QUI</string>
+    <string name="time_place_holder">00:00</string>
+    <string name="label_friday">SEX</string>
+    <string name="label_saturday">SAB</string>
+    <string name="label_sunday">DOM</string>
 </resources>
