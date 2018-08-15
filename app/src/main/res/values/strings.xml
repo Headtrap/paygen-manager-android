@@ -34,7 +34,7 @@
     <string name="warning_empty_fields">Preencha todos os campos</string>
     <string name="title_register">Cadastro</string>
     <string name="label_provider_name">Nome do estabelecimento</string>
-    <string name="label_address">Endreço</string>
+    <string name="label_address">Endereço</string>
     <string name="label_open_hours">Horário de funcionamento</string>
     <string name="label_abre">Abre</string>
     <string name="label_fecha">Fecha</string>
@@ -46,4 +46,11 @@
     <string name="label_friday">SEX</string>
     <string name="label_saturday">SAB</string>
     <string name="label_sunday">DOM</string>
+    <string name="label_about_desc">Sobre*</string>
+    <string name="disclaimer_about">* Conte um pouco sobre o seu estabelecimento,descreva as principais caracteristicas.</string>
+    <string name="restaurant">Restaurante</string>
+    <string name="hamburguer">Hamburgueria</string>
+    <string name="pizza">Pizzaria</string>
+    <string name="disclaimer_type">Selecione a categoiria do estabelecimento:</string>
+    <string name="label_register">Cadastrar</string>
 </resources>

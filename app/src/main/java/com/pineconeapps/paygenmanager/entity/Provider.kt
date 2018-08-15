@@ -1,6 +1,8 @@
 package com.pineconeapps.paygenmanager.entity
 
 import com.example.gustavobatista.paygen.entity.Lobby
+import com.pineconeapps.paygenmanager.PaygenApplication
+import com.pineconeapps.paygenmanager.R
 
 
 /**
@@ -22,9 +24,14 @@ class Provider(val type: Type,
         ACTIVE
     }
 
-    enum class Type {
-        RESTAURANT,
-        HAMBURGUER,
-        PIZZA
+    enum class Type(var stringRes: Int) {
+        RESTAURANT(R.string.restaurant),
+        HAMBURGUER(R.string.hamburguer),
+        PIZZA(R.string.pizza);
+
+        override fun toString(): String {
+            return PaygenApplication.applicationContext().getString(stringRes)
+        }
     }
+
 }

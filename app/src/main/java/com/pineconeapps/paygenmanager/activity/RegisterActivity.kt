@@ -5,14 +5,15 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.TimePicker
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.location.places.ui.PlaceAutocomplete
 import com.pineconeapps.paygenmanager.R
+import com.pineconeapps.paygenmanager.entity.Provider
 import kotlinx.android.synthetic.main.activity_register.*
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -22,9 +23,31 @@ class RegisterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        spTypes.adapter = ArrayAdapter<Provider.Type>(this, android.R.layout.simple_spinner_dropdown_item, Provider.Type.values())
+
+
         tvAddress.setOnClickListener { getPlaces() }
-        etAbreSeg.setOnClickListener { getOpenTime(this.etAbreSeg) }
-        etFechaSeg.setOnClickListener { getOpenTime(this.etFechaSeg) }
+
+        etAbreSeg.setOnClickListener { getOpenTime(etAbreSeg) }
+        etFechaSeg.setOnClickListener { getOpenTime(etFechaSeg) }
+
+        etAbreTer.setOnClickListener { getOpenTime(etAbreTer) }
+        etFechaTer.setOnClickListener { getOpenTime(etFechaTer) }
+
+        etAbreQua.setOnClickListener { getOpenTime(etAbreQua) }
+        etFechaQua.setOnClickListener { getOpenTime(etFechaQua) }
+
+        etAbreQui.setOnClickListener { getOpenTime(etAbreQui) }
+        etFechaQui.setOnClickListener { getOpenTime(etFechaQui) }
+
+        etAbreSex.setOnClickListener { getOpenTime(etAbreSex) }
+        etFechaSex.setOnClickListener { getOpenTime(etFechaSex) }
+
+        etAbreSab.setOnClickListener { getOpenTime(etAbreSab) }
+        etFechaSab.setOnClickListener { getOpenTime(etFechaSab) }
+
+        etAbreDom.setOnClickListener { getOpenTime(etAbreDom) }
+        etFechaDom.setOnClickListener { getOpenTime(etFechaDom) }
     }
 
     private fun getPlaces() {
@@ -73,4 +96,5 @@ class RegisterActivity : BaseActivity() {
         }, hour, minute,
                 DateFormat.is24HourFormat(getActivity())).show()
     }
+
 }
