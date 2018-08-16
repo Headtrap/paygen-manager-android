@@ -9,14 +9,13 @@ import com.pineconeapps.paygenmanager.R
  * Created by Headtrap on 28/08/2017.
  */
 
-class Provider(val type: Type,
-               val status: Status,
-               val lobby: Lobby,
-               val location: Point,
-               val sales: List<Transaction>,
-               val consumptions: List<Consumption>,
-               val employees: List<User>,
-               val info: ProviderInfo) : User("", "", "", "", "") {
+class Provider(var status: Status,
+               var lobby: Lobby,
+               var location: Point,
+               var sales: List<Transaction>,
+               var consumptions: List<Consumption>,
+               var employees: List<User>,
+               var info: ProviderInfo) : User("", "", "", "", "") {
 
 
     enum class Status {

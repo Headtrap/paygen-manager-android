@@ -5,26 +5,44 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.format.DateFormat
+import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.TimePicker
+import com.example.gustavobatista.paygen.entity.Lobby
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.location.places.ui.PlaceAutocomplete
 import com.pineconeapps.paygenmanager.R
+import com.pineconeapps.paygenmanager.entity.OpenHours
+import com.pineconeapps.paygenmanager.entity.Point
 import com.pineconeapps.paygenmanager.entity.Provider
+import com.pineconeapps.paygenmanager.entity.ProviderInfo
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 
 class RegisterActivity : BaseActivity() {
+    lateinit var provider: Provider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        spTypes.adapter = ArrayAdapter<Provider.Type>(this, android.R.layout.simple_spinner_dropdown_item, Provider.Type.values())
+        if (provider == null) {
+            provider = Provider(Provider.Status.PENDING, Lobby(), Point(0.0, 0.0),
+                    mutableListOf(), mutableListOf(), mutableListOf(),
+                    ProviderInfo("", "", "", ProviderInfo.Type.HAMBURGUER, mutableListOf()))
+        }
 
+        btRegister.setOnClickListener { onClickRegister() }
+
+        spTypes.adapter = ArrayAdapter<ProviderInfo.Type>(this,
+                android.R.layout.simple_spinner_dropdown_item, ProviderInfo.Type.values())
+
+        spTypes.onItemSelectedListener = onSelectType()
 
         tvAddress.setOnClickListener { getPlaces() }
 
@@ -50,6 +68,17 @@ class RegisterActivity : BaseActivity() {
         etFechaDom.setOnClickListener { getOpenTime(etFechaDom) }
     }
 
+    private fun onSelectType(): OnItemSelectedListener {
+        return object : OnItemSelectedListener {
+            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+                provider.info.type = ProviderInfo.Type.values()[position]
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+            }
+        }
+    }
+
     private fun getPlaces() {
         try {
             val intent = PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_FULLSCREEN)
@@ -67,7 +96,8 @@ class RegisterActivity : BaseActivity() {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 val place = PlaceAutocomplete.getPlace(this, data)
-                tvAddress.setText(place.address)
+                provider.location = Point(place.latLng.latitude, place.latLng.longitude)
+                provider.info.address = place.address.toString()
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 val status = PlaceAutocomplete.getStatus(this, data)
                 showWarning(status.statusMessage!!)
@@ -95,6 +125,53 @@ class RegisterActivity : BaseActivity() {
 
         }, hour, minute,
                 DateFormat.is24HourFormat(getActivity())).show()
+    }
+
+    private fun onClickRegister() {
+        when {
+            getOpenHours().size == 0 -> showWarning("Selecione ao menos uma data e horário")
+            tvAbout.text.toString().isEmpty() -> showWarning("Informe um texto dobre sua empresa")
+            provider.info.address.isNullOrEmpty() -> showWarning("Informe um endereço")
+            else -> buildprovider()
+        }
+    }
+
+    private fun buildprovider() {
+        provider.info.openHours = getOpenHours()
+        provider.info.about = tvAbout.text.toString()
+
+    }
+
+    private fun getOpenHours(): MutableList<OpenHours> {
+        val list: MutableList<OpenHours> = mutableListOf()
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("SEG", etAbreSeg.text.toString(), etFechaSeg.text.toString()))
+        }
+
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("TER", etAbreTer.text.toString(), etFechaTer.text.toString()))
+        }
+
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("QUA", etAbreQua.text.toString(), etFechaQua.text.toString()))
+        }
+
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("QUI", etAbreQui.text.toString(), etFechaQui.text.toString()))
+        }
+
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("SEX", etAbreSex.text.toString(), etFechaSex.text.toString()))
+        }
+
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("SAB", etAbreSab.text.toString(), etFechaSab.text.toString()))
+        }
+
+        if (cbAbreSeg.isChecked) {
+            list.add(OpenHours("DOM", etAbreDom.text.toString(), etFechaDom.text.toString()))
+        }
+        return list
     }
 
 }
