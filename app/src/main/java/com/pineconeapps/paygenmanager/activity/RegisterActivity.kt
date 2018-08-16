@@ -25,7 +25,7 @@ import java.util.*
 
 
 class RegisterActivity : BaseActivity() {
-    lateinit var provider: Provider
+    var provider: Provider? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +71,7 @@ class RegisterActivity : BaseActivity() {
     private fun onSelectType(): OnItemSelectedListener {
         return object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-                provider.info.type = ProviderInfo.Type.values()[position]
+                provider!!.info.type = ProviderInfo.Type.values()[position]
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
@@ -96,8 +96,9 @@ class RegisterActivity : BaseActivity() {
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 val place = PlaceAutocomplete.getPlace(this, data)
-                provider.location = Point(place.latLng.latitude, place.latLng.longitude)
-                provider.info.address = place.address.toString()
+                provider!!.location = Point(place.latLng.latitude, place.latLng.longitude)
+                provider!!.info.address = place.address.toString()
+                tvAddress.setText(place.address.toString() )
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 val status = PlaceAutocomplete.getStatus(this, data)
                 showWarning(status.statusMessage!!)
@@ -129,16 +130,18 @@ class RegisterActivity : BaseActivity() {
 
     private fun onClickRegister() {
         when {
+            tvName.text.toString().isEmpty() -> showWarning("Informe o nome do estabelecimento")
             getOpenHours().size == 0 -> showWarning("Selecione ao menos uma data e horário")
             tvAbout.text.toString().isEmpty() -> showWarning("Informe um texto dobre sua empresa")
-            provider.info.address.isNullOrEmpty() -> showWarning("Informe um endereço")
+            provider!!.info.address.isNullOrEmpty() -> showWarning("Informe um endereço")
             else -> buildprovider()
         }
     }
 
     private fun buildprovider() {
-        provider.info.openHours = getOpenHours()
-        provider.info.about = tvAbout.text.toString()
+        provider!!.info.openHours = getOpenHours()
+        provider!!.info.about = tvAbout.text.toString()
+        provider!!.name = tvName.text.toString()
 
     }
 
@@ -148,27 +151,27 @@ class RegisterActivity : BaseActivity() {
             list.add(OpenHours("SEG", etAbreSeg.text.toString(), etFechaSeg.text.toString()))
         }
 
-        if (cbAbreSeg.isChecked) {
+        if (cbAbreTer.isChecked) {
             list.add(OpenHours("TER", etAbreTer.text.toString(), etFechaTer.text.toString()))
         }
 
-        if (cbAbreSeg.isChecked) {
+        if (cbAbreQuar.isChecked) {
             list.add(OpenHours("QUA", etAbreQua.text.toString(), etFechaQua.text.toString()))
         }
 
-        if (cbAbreSeg.isChecked) {
+        if (cbAbreQui.isChecked) {
             list.add(OpenHours("QUI", etAbreQui.text.toString(), etFechaQui.text.toString()))
         }
 
-        if (cbAbreSeg.isChecked) {
+        if (cbAbreSex.isChecked) {
             list.add(OpenHours("SEX", etAbreSex.text.toString(), etFechaSex.text.toString()))
         }
 
-        if (cbAbreSeg.isChecked) {
+        if (cbAbreSab.isChecked) {
             list.add(OpenHours("SAB", etAbreSab.text.toString(), etFechaSab.text.toString()))
         }
 
-        if (cbAbreSeg.isChecked) {
+        if (cbAbreDom.isChecked) {
             list.add(OpenHours("DOM", etAbreDom.text.toString(), etFechaDom.text.toString()))
         }
         return list
