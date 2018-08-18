@@ -32,7 +32,7 @@ class ConsumptionActivity : BaseActivity() {
     private fun initViews() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         swipeRefresh.setOnRefreshListener { getConsumption() }
-        fabPay.setOnClickListener { startActivity<AddItemsActivity>("customer" to customer) }
+        fabAddItem.setOnClickListener { startActivity<AddItemsActivity>("customer" to customer) }
         getConsumption()
     }
 

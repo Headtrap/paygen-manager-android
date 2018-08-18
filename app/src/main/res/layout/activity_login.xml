@@ -11,14 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.LoginActivity">
 
-    <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/login_form"
@@ -30,6 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:text="Para obter acesso a conta deste estabelecimento informe seu usuário e senha" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -66,13 +65,45 @@
 
             <Button
                 android:id="@+id/btLogin"
-                android:backgroundTint="@color/green_400"
-                android:textColor="@color/white"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/green_400"
                 android:text="@string/label_login"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <RadioButton
+                    android:id="@+id/rbAdmin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingRight="24dp"
+                    android:text="@string/label_admin" />
+
+                <RadioButton
+                    android:id="@+id/rbEmployees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_employees" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvDisclaimerRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Não possui cadastro ainda? Clique aqui e preencha o formulário" />
+
 
         </LinearLayout>
     </ScrollView>

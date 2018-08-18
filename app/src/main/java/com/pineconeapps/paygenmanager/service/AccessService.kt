@@ -7,4 +7,8 @@ object AccessService : Service() {
         get() = createService(AccessEndpoint::class.java)
 
     fun validateProvider(email: String, password: String) = service.validateProvider(email, password)
+
+    fun validateEmployee(email: String, password: String) = service.validateEmployee(email, password)
+
+    fun checkProvider(email: String) = service.checkProvider(email)
 }

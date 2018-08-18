@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.example.gustavobatista.paygen.entity.Lobby
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.activity.ConsumptionActivity
-import com.pineconeapps.paygenmanager.adapter.CustomerAdapter
+import com.pineconeapps.paygenmanager.adapter.UserAdapter
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.LobbyService
 import kotlinx.android.synthetic.main.fragment_costumer_list.*
@@ -51,10 +51,19 @@ class CostumerListFragment : BaseFragment() {
     }
 
     private fun createAdapter(lobby: Lobby) {
-        val adapter = CustomerAdapter(lobby.customerList) {
-            startActivity<ConsumptionActivity>("customer" to it)
+        if (lobby.customerList.isEmpty()) {
+            tvEmptyRecycler.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        } else {
+
+            tvEmptyRecycler.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+            tvCustomers.text = lobby.customerList.size.toString()
+            val adapter = UserAdapter(lobby.customerList) {
+                startActivity<ConsumptionActivity>("customer" to it)
+            }
+            recyclerView.adapter = adapter
         }
-        recyclerView.adapter = adapter
     }
 
 

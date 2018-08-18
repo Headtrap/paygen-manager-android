@@ -8,8 +8,10 @@ import android.view.Menu
 import android.view.MenuItem
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.fragment.CostumerListFragment
+import com.pineconeapps.paygenmanager.util.UserInfo
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,9 +45,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             R.id.action_settings -> return true
             else -> return super.onOptionsItemSelected(item)
@@ -56,10 +55,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
-                // Handle the camera action
+                startActivity<EmployeesActivity>()
             }
             R.id.nav_gallery -> {
-
+                startActivity<ProductsActivity>()
             }
             R.id.nav_slideshow -> {
 
@@ -67,15 +66,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_manage -> {
 
             }
-            R.id.nav_share -> {
-
-            }
             R.id.nav_send -> {
-
+                UserInfo.clearData()
+                startActivity<SplashActivity>()
+                finish()
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
-        return true
+        return false
     }
 }

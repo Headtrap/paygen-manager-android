@@ -20,7 +20,10 @@ import com.pineconeapps.paygenmanager.entity.OpenHours
 import com.pineconeapps.paygenmanager.entity.Point
 import com.pineconeapps.paygenmanager.entity.Provider
 import com.pineconeapps.paygenmanager.entity.ProviderInfo
+import com.pineconeapps.paygenmanager.service.ProviderService
 import kotlinx.android.synthetic.main.activity_register.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.yesButton
 import java.util.*
 
 
@@ -30,6 +33,7 @@ class RegisterActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        setupActionBar()
 
         if (provider == null) {
             provider = Provider(Provider.Status.PENDING, Lobby(), Point(0.0, 0.0),
@@ -44,7 +48,7 @@ class RegisterActivity : BaseActivity() {
 
         spTypes.onItemSelectedListener = onSelectType()
 
-        tvAddress.setOnClickListener { getPlaces() }
+        etAddress.setOnClickListener { getPlaces() }
 
         etAbreSeg.setOnClickListener { getOpenTime(etAbreSeg) }
         etFechaSeg.setOnClickListener { getOpenTime(etFechaSeg) }
@@ -98,7 +102,7 @@ class RegisterActivity : BaseActivity() {
                 val place = PlaceAutocomplete.getPlace(this, data)
                 provider!!.location = Point(place.latLng.latitude, place.latLng.longitude)
                 provider!!.info.address = place.address.toString()
-                tvAddress.setText(place.address.toString() )
+                etAddress.setText(place.address.toString())
             } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
                 val status = PlaceAutocomplete.getStatus(this, data)
                 showWarning(status.statusMessage!!)
@@ -130,19 +134,39 @@ class RegisterActivity : BaseActivity() {
 
     private fun onClickRegister() {
         when {
-            tvName.text.toString().isEmpty() -> showWarning("Informe o nome do estabelecimento")
-            getOpenHours().size == 0 -> showWarning("Selecione ao menos uma data e horário")
-            tvAbout.text.toString().isEmpty() -> showWarning("Informe um texto dobre sua empresa")
-            provider!!.info.address.isNullOrEmpty() -> showWarning("Informe um endereço")
+            etName.text.isNullOrEmpty() -> showWarning(getString(R.string.warning_empty_provider_name))
+            etEmail.text.isNullOrEmpty() -> showWarning(getString(R.string.warning_empty_email))
+            getOpenHours().size == 0 -> showWarning(getString(R.string.warning_empty_hours))
+            etAbout.text.isNullOrEmpty() -> showWarning(getString(R.string.warning_empty_about))
+            provider!!.info.address.isNullOrEmpty() -> showWarning(getString(R.string.warning_empty_address))
             else -> buildprovider()
         }
     }
 
     private fun buildprovider() {
         provider!!.info.openHours = getOpenHours()
-        provider!!.info.about = tvAbout.text.toString()
-        provider!!.name = tvName.text.toString()
+        provider!!.info.about = etAbout.text.toString()
+        provider!!.name = etName.text.toString()
+        provider!!.email = etEmail.text.toString()
 
+        showProgress()
+        ProviderService.addProvider(provider!!).applySchedulers().subscribe(
+                {
+                    handleResult(it)
+                },
+                {
+                    closeProgress()
+                    handleException(it)
+                },
+                {
+                    closeProgress()
+                }
+        )
+
+    }
+
+    private fun handleResult(message: String) {
+        alert(message, getString(R.string.title_success)) { yesButton { finish() } }.show()
     }
 
     private fun getOpenHours(): MutableList<OpenHours> {
@@ -176,5 +200,6 @@ class RegisterActivity : BaseActivity() {
         }
         return list
     }
+
 
 }

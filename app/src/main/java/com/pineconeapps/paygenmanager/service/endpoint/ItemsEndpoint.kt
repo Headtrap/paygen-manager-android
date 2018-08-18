@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface ItemsEndpoint {
 
-    @GET("item/listProducts/{providerId}")
+    @GET("product/listProducts/{providerId}")
     fun listProducts(@Path("providerId") providerId: String): Observable<List<Item>>
 
     @GET("item/findProduct/{providerId}/{query}")
