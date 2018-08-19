@@ -16,5 +16,6 @@ class SplashActivity : Activity() {
             prefs.token == "" -> startActivity<LoginActivity>()
             else -> startActivity<MainActivity>()
         }
+        finish()
     }
 }

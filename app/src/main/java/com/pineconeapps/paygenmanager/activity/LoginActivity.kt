@@ -7,7 +7,6 @@ import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.AccessService
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
-import java.security.Provider
 
 class LoginActivity : BaseActivity() {
 
@@ -60,6 +59,7 @@ class LoginActivity : BaseActivity() {
         prefs.providerId = dto.providerId
         prefs.userId = dto.userId
         startActivity<MainActivity>()
+        finish()
     }
 
 
