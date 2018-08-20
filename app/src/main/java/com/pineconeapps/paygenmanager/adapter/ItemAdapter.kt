@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.entity.Item
-import kotlinx.android.synthetic.main.adapter_item.view.*
 import com.pineconeapps.paygenmanager.util.StringUtils.currency
+import kotlinx.android.synthetic.main.adapter_item.view.*
 
 class ItemAdapter(private val items: List<Item>) :
         RecyclerView.Adapter<ItemAdapter.ViewHolder>() {

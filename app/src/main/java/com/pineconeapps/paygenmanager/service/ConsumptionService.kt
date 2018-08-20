@@ -1,7 +1,6 @@
 package com.pineconeapps.paygenmanager.service
 
 import com.pineconeapps.paygenmanager.entity.Consumption
-import com.pineconeapps.paygenmanager.entity.Item
 import com.pineconeapps.paygenmanager.service.endpoint.ConsumptionEndpoint
 import io.reactivex.Observable
 

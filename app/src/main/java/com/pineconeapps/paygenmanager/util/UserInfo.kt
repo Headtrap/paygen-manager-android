@@ -2,11 +2,8 @@ package com.pineconeapps.paygenmanager.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.firebase.ui.auth.AuthUI
 import com.pineconeapps.paygenmanager.PaygenApplication.Companion.prefs
 import com.pineconeapps.paygenmanager.entity.User
-import com.pineconeapps.paygenmanager.util.Constants.PREF_EMAIL
-import com.pineconeapps.paygenmanager.util.Constants.PREF_GOOGLE
 import com.pineconeapps.paygenmanager.util.Constants.PREF_ID
 import com.pineconeapps.paygenmanager.util.Constants.PREF_KEY
 import com.pineconeapps.paygenmanager.util.Constants.PREF_PROVIDER_ID

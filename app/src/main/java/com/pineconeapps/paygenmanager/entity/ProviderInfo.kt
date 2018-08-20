@@ -4,8 +4,9 @@ import com.pineconeapps.paygenmanager.PaygenApplication
 import com.pineconeapps.paygenmanager.R
 import java.io.Serializable
 
-class ProviderInfo(var banner: String, var address: String, var about: String, var type: Type, var openHours: List<OpenHours>) : Serializable {
-
+class ProviderInfo(var address: String, var about: String, var type: Type, var openHours: List<OpenHours>) : Serializable {
+    var logo: String = ""
+    var banner: String = ""
 
     enum class Type(var stringRes: Int) {
         RESTAURANT(R.string.restaurant),

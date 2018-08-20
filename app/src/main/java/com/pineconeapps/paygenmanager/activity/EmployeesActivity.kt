@@ -2,7 +2,6 @@ package com.pineconeapps.paygenmanager.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.ActionMode
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.adapter.UserAdapter
 import com.pineconeapps.paygenmanager.entity.Employee

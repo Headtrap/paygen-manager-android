@@ -5,8 +5,8 @@ import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.entity.Product
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.ProductService
-import kotlinx.android.synthetic.main.activity_add_product.*
 import com.pineconeapps.paygenmanager.util.StringUtils.currency
+import kotlinx.android.synthetic.main.activity_add_product.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.yesButton
 

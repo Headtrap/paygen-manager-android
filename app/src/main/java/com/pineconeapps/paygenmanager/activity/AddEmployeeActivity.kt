@@ -9,7 +9,6 @@ import com.pineconeapps.paygenmanager.entity.Employee
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.EmployeeService
 import kotlinx.android.synthetic.main.activity_add_employee.*
-import kotlinx.android.synthetic.main.activity_employees.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.yesButton
 

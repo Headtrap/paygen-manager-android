@@ -54,17 +54,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
+            R.id.nav_employees -> {
                 startActivity<EmployeesActivity>()
             }
-            R.id.nav_gallery -> {
+            R.id.nav_products -> {
                 startActivity<ProductsActivity>()
             }
-            R.id.nav_slideshow -> {
-
-            }
-            R.id.nav_manage -> {
-
+            R.id.nav_images -> {
+                startActivity<ImageActivity>()
             }
             R.id.nav_send -> {
                 UserInfo.clearData()

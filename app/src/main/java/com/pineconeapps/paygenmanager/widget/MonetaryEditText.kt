@@ -31,7 +31,7 @@ class MonetaryEditText : AppCompatEditText {
         val value = monetaryEditText.text.toString()
         return when {
             value.isNullOrEmpty() -> 0.0
-            else -> value.replace("[R$,.]"
+            else -> value.replace("[R$]"
                     .toRegex(), "").replace(" ", "")
                     .replace("-".toRegex(), "").toDouble()
         }

@@ -82,4 +82,9 @@
     <string name="label_discount">Desconto</string>
     <string name="label_amount_in_stock">Quantidade em estoque</string>
     <string name="disclaimer_customers_checked">Clientes atualmente no seu estabelecimento</string>
+    <string name="disclaimer_camera_usage">Para prosseguir precisamos de permissão para acessar sua camera</string>
+    <string name="choose_image">Escolha uma imagem</string>
+    <string name="warning_no_images_changed">Nenhuma imagem foi alterada</string>
+    <string name="disclaimer_banner">Agora scolha uma imagem de um banner que será exibida no aplicativo para seus clientes</string>
+    <string name="disclaimer_logo">Escolha uma imagem do seu logotipo que será exibida no aplicativo para seus clientes</string>
 </resources>

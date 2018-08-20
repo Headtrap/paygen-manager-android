@@ -5,10 +5,8 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.view.Gravity
-import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.ProgressBar
-
 import com.pineconeapps.paygenmanager.R
 
 

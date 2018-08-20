@@ -9,8 +9,7 @@ import com.pineconeapps.paygenmanager.R
  * Created by Headtrap on 28/08/2017.
  */
 
-class Provider(var status: Status,
-               var lobby: Lobby,
+class Provider(var lobby: Lobby,
                var location: Point,
                var sales: List<Transaction>,
                var consumptions: List<Consumption>,

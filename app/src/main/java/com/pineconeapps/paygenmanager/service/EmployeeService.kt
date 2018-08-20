@@ -1,7 +1,6 @@
 package com.pineconeapps.paygenmanager.service
 
 import com.pineconeapps.paygenmanager.entity.Employee
-import com.pineconeapps.paygenmanager.entity.Provider
 import com.pineconeapps.paygenmanager.service.endpoint.EmployeeEndpoint
 
 object EmployeeService : Service() {

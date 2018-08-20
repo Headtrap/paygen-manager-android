@@ -1,6 +1,6 @@
 package com.pineconeapps.paygenmanager.service.endpoint
 
-import com.pineconeapps.paygenmanager.entity.LoginDTO
+import com.pineconeapps.paygenmanager.entity.dto.LoginDTO
 import com.pineconeapps.paygenmanager.entity.Provider
 import io.reactivex.Observable
 import retrofit2.http.GET

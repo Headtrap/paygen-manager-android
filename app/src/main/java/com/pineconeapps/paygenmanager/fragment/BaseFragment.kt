@@ -7,7 +7,6 @@ import android.app.FragmentTransaction
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.crashlytics.android.Crashlytics
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.widget.Progress
 import io.reactivex.Observable

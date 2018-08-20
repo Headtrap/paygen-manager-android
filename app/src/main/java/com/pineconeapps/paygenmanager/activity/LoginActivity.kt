@@ -2,7 +2,7 @@ package com.pineconeapps.paygenmanager.activity
 
 import android.os.Bundle
 import com.pineconeapps.paygenmanager.R
-import com.pineconeapps.paygenmanager.entity.LoginDTO
+import com.pineconeapps.paygenmanager.entity.dto.LoginDTO
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.AccessService
 import kotlinx.android.synthetic.main.activity_login.*

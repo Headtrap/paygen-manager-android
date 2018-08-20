@@ -11,6 +11,7 @@ object Constants {
     const val PREF_GOOGLE = "GOOGLE"
     const val PREF_PROVIDER_ID = "provider"
     const val  PREF_TOKEN: String = "token"
+    const val  UPLOAD_PRESET = "lmjcsejo"
 
     const val TRANSITION_KEY_PROVIDER: String = "provider"
     const val TRANSITION_KEY_ITEMS: String = "items"

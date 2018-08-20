@@ -36,9 +36,9 @@ class RegisterActivity : BaseActivity() {
         setupActionBar()
 
         if (provider == null) {
-            provider = Provider(Provider.Status.PENDING, Lobby(), Point(0.0, 0.0),
+            provider = Provider(Lobby(), Point(0.0, 0.0),
                     mutableListOf(), mutableListOf(), mutableListOf(),
-                    ProviderInfo("", "", "", ProviderInfo.Type.HAMBURGUER, mutableListOf()))
+                    ProviderInfo("", "", ProviderInfo.Type.HAMBURGUER, mutableListOf()))
         }
 
         btRegister.setOnClickListener { onClickRegister() }
