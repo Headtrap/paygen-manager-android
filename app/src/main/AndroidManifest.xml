@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:name=".PaygenApplication"
         android:allowBackup="true"
@@ -61,7 +60,8 @@
             android:label="@string/title_employees"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.ImageActivity"></activity>
+        <activity android:name=".activity.ImageActivity" />
+        <activity android:name=".activity.SalesActivity"></activity>
     </application>
 
 </manifest>

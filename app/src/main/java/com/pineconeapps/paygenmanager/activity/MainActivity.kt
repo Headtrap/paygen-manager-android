@@ -63,6 +63,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_images -> {
                 startActivity<ImageActivity>()
             }
+            R.id.nav_reports -> {
+                startActivity<SalesActivity>()
+            }
             R.id.nav_send -> {
                 UserInfo.clearData()
                 startActivity<SplashActivity>()

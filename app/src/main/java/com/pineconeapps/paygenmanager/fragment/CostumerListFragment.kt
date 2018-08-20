@@ -54,8 +54,9 @@ class CostumerListFragment : BaseFragment() {
         if (lobby.customerList.isEmpty()) {
             tvEmptyRecycler.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
-        } else {
+            tvCustomers.text = "0"
 
+        } else {
             tvEmptyRecycler.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
             tvCustomers.text = lobby.customerList.size.toString()
