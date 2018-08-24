@@ -8,6 +8,7 @@ import com.pineconeapps.paygenmanager.entity.Transaction
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.TransactionService
 import kotlinx.android.synthetic.main.activity_sales.*
+import org.jetbrains.anko.startActivity
 
 class SalesActivity : BaseActivity() {
 
@@ -41,7 +42,7 @@ class SalesActivity : BaseActivity() {
 
     private fun setupAdapter(transactions: List<Transaction>) {
         val adapter = TransactionAdapter(transactions) {
-
+            startActivity<SaleDetailsActivity>("transaction" to it)
         }
         recyclerView.adapter = adapter
     }

@@ -59,9 +59,22 @@
             android:name=".activity.AddEmployeeActivity"
             android:label="@string/title_employees"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.ImageActivity" />
-        <activity android:name=".activity.SalesActivity"></activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_welcome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ImageActivity"
+            android:label="@string/title_visual_id"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SalesActivity"
+            android:label="@string/title_sales"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SaleDetailsActivity"
+            android:label="@string/title_sale_details"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

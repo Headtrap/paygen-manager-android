@@ -18,8 +18,8 @@
             android:title="Identidade visual" />
         <item
             android:id="@+id/nav_reports"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Relatorios" />
+            android:icon="@drawable/ic_menu_sales"
+            android:title="Minhas vendas" />
     </group>
 
     <item android:title="Communicate">

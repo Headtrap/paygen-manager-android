@@ -2,6 +2,7 @@ package com.pineconeapps.paygenmanager.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.adapter.ItemAdapter
 import com.pineconeapps.paygenmanager.entity.Consumption
@@ -20,6 +21,7 @@ class ConsumptionActivity : BaseActivity() {
         setupActionBar()
         setupToolbar(R.string.title_consumption)
         customer = intent.getSerializableExtra("customer") as Customer
+        tvCustomerName.text = customer.name
     }
 
     override fun onStart() {
@@ -54,6 +56,14 @@ class ConsumptionActivity : BaseActivity() {
     }
 
     private fun createAdapter(consumption: Consumption) {
+        if (consumption.items.isEmpty()) {
+            tvEmptyRecycler.visibility = View.VISIBLE
+            recyclerView.visibility = View.GONE
+        } else {
+            tvEmptyRecycler.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
+
         val adapter = ItemAdapter(consumption.items)
         recyclerView.adapter = adapter
     }

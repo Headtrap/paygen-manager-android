@@ -80,10 +80,10 @@
     <Button
         android:id="@+id/btSave"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:backgroundTint="@color/green_400"
         android:text="@string/label_save"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
