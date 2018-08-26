@@ -94,4 +94,8 @@
     <string name="title_sale_details">Detalhes da venda</string>
     <string name="label_product_name">Nome do produto</string>
     <string name="status_pending">Ativação pendente</string>
+    <string name="label_one_day">Último dia</string>
+    <string name="label_thirty_days">Últimos 30 dias</string>
+    <string name="label_seven_days">Útimos 7 dias</string>
+    <string name="label_custom_date">Data customizada</string>
 </resources>
