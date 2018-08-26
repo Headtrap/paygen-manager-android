@@ -21,7 +21,7 @@ class MonetaryEditText : AppCompatEditText {
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {}
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     fun clear() {
         this.setText(empty)
@@ -31,9 +31,10 @@ class MonetaryEditText : AppCompatEditText {
         val value = monetaryEditText.text.toString()
         return when {
             value.isNullOrEmpty() -> 0.0
-            else -> value.replace("[R$]"
-                    .toRegex(), "").replace(" ", "")
-                    .replace("-".toRegex(), "").toDouble()
+            else -> value.replace("[R$]".toRegex(), "")
+                    .replace(" ", "")
+                    .replace(".", "")
+                    .replace(",".toRegex(), ".").toDouble()
         }
     }
 

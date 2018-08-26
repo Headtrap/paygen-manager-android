@@ -15,6 +15,7 @@ interface AccessEndpoint {
     fun validateEmployee(@Path("email") email: String,
                          @Path("password") password: String): Observable<LoginDTO>
 
-    @GET("access/check/{email}")
-    fun checkProvider(@Path("email") email: String): Observable<Provider>
+    @GET("access/changeProviderPassword/{userId}/{password}")
+    fun changePassword(@Path("userId") userId: String, @Path("password") password: String): Observable<String>
+
 }

@@ -1,7 +1,9 @@
 package com.pineconeapps.paygenmanager.service
 
 import com.pineconeapps.paygenmanager.BuildConfig
+import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.converter.ResponseConverterFactory
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -31,9 +33,21 @@ open class Service {
 
         private val okHttpClient: OkHttpClient
             get() = OkHttpClient.Builder()
+                    .addInterceptor(interceptor)
                     .readTimeout(60, TimeUnit.SECONDS)
                     .connectTimeout(60, TimeUnit.SECONDS)
                     .build()
-    }
 
+        private val interceptor: Interceptor
+            get() = Interceptor { chain ->
+                val original = chain.request()
+
+                val request = original.newBuilder()
+                        .header("Access-Token", prefs.token)
+                        .method(original.method(), original.body())
+                        .build()
+
+                chain.proceed(request)
+            }
+    }
 }

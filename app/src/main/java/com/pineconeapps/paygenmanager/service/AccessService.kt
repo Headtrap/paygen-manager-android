@@ -10,5 +10,6 @@ object AccessService : Service() {
 
     fun validateEmployee(email: String, password: String) = service.validateEmployee(email, password)
 
-    fun checkProvider(email: String) = service.checkProvider(email)
+    fun changePassword(userId: String, password: String) = service.changePassword(userId, password)
+
 }

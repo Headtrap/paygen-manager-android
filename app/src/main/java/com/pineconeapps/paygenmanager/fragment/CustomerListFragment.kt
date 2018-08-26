@@ -15,7 +15,7 @@ import com.pineconeapps.paygenmanager.service.LobbyService
 import kotlinx.android.synthetic.main.fragment_costumer_list.*
 import org.jetbrains.anko.startActivity
 
-class CostumerListFragment : BaseFragment() {
+class CustomerListFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

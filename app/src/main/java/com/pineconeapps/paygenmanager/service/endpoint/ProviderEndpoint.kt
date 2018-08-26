@@ -9,7 +9,7 @@ import retrofit2.http.Path
 
 interface ProviderEndpoint {
 
-    @POST("provider/addProvider")
+    @POST("access/addProvider")
     fun addProvider(@Body provider: Provider): Observable<String>
 
     @POST("provider/setImages/{providerId}")

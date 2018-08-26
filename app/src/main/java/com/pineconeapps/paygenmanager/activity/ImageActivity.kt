@@ -2,10 +2,7 @@ package com.pineconeapps.paygenmanager.activity
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Base64
 import android.util.Log
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.entity.CloudinaryResponse
@@ -13,15 +10,14 @@ import com.pineconeapps.paygenmanager.entity.dto.ImagesDTO
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.ImageService
 import com.pineconeapps.paygenmanager.service.ProviderService
+import com.pineconeapps.paygenmanager.util.ImageUtil
 import com.pineconeapps.paygenmanager.util.ImageUtil.load
 import com.pineconeapps.paygenmanager.util.PermissionUtils
-import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_image.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.yesButton
 import pl.aprilapps.easyphotopicker.DefaultCallback
 import pl.aprilapps.easyphotopicker.EasyImage
-import java.io.ByteArrayOutputStream
 import java.io.File
 
 
@@ -43,9 +39,10 @@ class ImageActivity : BaseActivity() {
         imLogo.setOnClickListener { pickImage(logo) }
         btSave.setOnClickListener { sendImages() }
 
-        getImages()
         imBanner.load("") { request -> request.fit() }
         imLogo.load("") { request -> request.fit() }
+
+        getImages()
 
     }
 
@@ -112,7 +109,7 @@ class ImageActivity : BaseActivity() {
         )
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         EasyImage.handleActivityResult(requestCode, resultCode, data, this, object : DefaultCallback() {
             override fun onImagePickerError(e: Exception?, source: EasyImage.ImageSource?, type: Int) {
@@ -143,19 +140,6 @@ class ImageActivity : BaseActivity() {
         }
     }
 
-    private fun getImageAsString(file: File, type: Int) {
-        showProgress()
-        getBitmap(file).applySchedulers().subscribe(
-                {
-                    uploadImage(it, type)
-                },
-                {
-                    closeProgress()
-                    handleException(it)
-                }
-        )
-    }
-
     private fun setupImages(response: CloudinaryResponse, type: Int) {
         imagesChanged = true
         when (type) {
@@ -170,19 +154,17 @@ class ImageActivity : BaseActivity() {
         }
     }
 
-    private fun getBitmap(file: File): Observable<String> {
-        return Observable.create { subscriber ->
-            try {
-                val bitmap = BitmapFactory.decodeFile(file.path)
-                val bao = ByteArrayOutputStream()
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 60, bao)
-                val ba = bao.toByteArray()
-                val string = Base64.encodeToString(ba, Base64.DEFAULT)
-                subscriber.onNext("data:image/jpeg;base64,$string")
-            } catch (e: Throwable) {
-                subscriber.onError(e)
-            }
-        }
+    private fun getImageAsString(file: File, type: Int) {
+        showProgress()
+        ImageUtil.compressImage(file).applySchedulers().subscribe(
+                {
+                    uploadImage(it, type)
+                },
+                {
+                    closeProgress()
+                    handleException(it)
+                }
+        )
     }
 
     private fun setImages(images: ImagesDTO) {

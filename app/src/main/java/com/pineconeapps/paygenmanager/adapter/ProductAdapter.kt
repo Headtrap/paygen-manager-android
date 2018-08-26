@@ -25,7 +25,7 @@ class ProductAdapter(private val products: List<Product>, val listener: (Product
 
         fun bindView(product: Product, listener: (Product) -> Unit) = with(itemView) {
             tvPrice.text = product.price.currency()
-            tvDesc.text = product.description
+            tvDesc.text = product.name
             tvStock.text = product.amount.toString()
             setOnClickListener { listener(product) }
         }

@@ -9,9 +9,11 @@ object Constants {
     const val PREF_ID = "ID"
     const val PREF_EMAIL = "EMAIL"
     const val PREF_GOOGLE = "GOOGLE"
+    const val PREF_PICTURE = "picture"
+    const val PREF_USERNAME = "username"
     const val PREF_PROVIDER_ID = "provider"
-    const val  PREF_TOKEN: String = "token"
-    const val  UPLOAD_PRESET = "lmjcsejo"
+    const val PREF_TOKEN: String = "token"
+    const val UPLOAD_PRESET = "lmjcsejo"
 
     const val TRANSITION_KEY_PROVIDER: String = "provider"
     const val TRANSITION_KEY_ITEMS: String = "items"

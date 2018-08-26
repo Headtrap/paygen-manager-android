@@ -6,14 +6,20 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import com.pineconeapps.paygenmanager.R
-import com.pineconeapps.paygenmanager.fragment.CostumerListFragment
+import com.pineconeapps.paygenmanager.fragment.CustomerListFragment
+import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.util.UserInfo
+import com.pineconeapps.paygenmanager.util.ImageUtil.load
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+    lateinit var tvName: TextView
+    lateinit var logoImage: CircleImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +31,17 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
+        val header = nav_view.getHeaderView(0)
+        logoImage = header.findViewById(R.id.headerImage)
+        tvName = header.findViewById(R.id.tvName)
+        fragmentManager.inTransaction { add(R.id.container, CustomerListFragment()) }
 
-        fragmentManager.inTransaction { add(R.id.container, CostumerListFragment()) }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        tvName.text = prefs.userName
+        logoImage.load(prefs.picture) { request -> request.fit() }
 
     }
 
@@ -39,7 +54,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }

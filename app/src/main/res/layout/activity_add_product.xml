@@ -8,77 +8,125 @@
     android:orientation="vertical"
     tools:context=".activity.AddProductActivity">
 
-
-    <android.support.design.widget.TextInputLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
+        android:layout_height="wrap_content">
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etDesc"
-            android:layout_width="match_parent"
-            android:inputType="text"
-            android:layout_height="wrap_content"
-            android:hint="@string/label_product_desc"
-            android:maxLines="1" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
-
-        <com.pineconeapps.paygenmanager.widget.MonetaryEditText
-            android:id="@+id/etValue"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/label_value"
-            android:inputType="number"
-            android:maxLines="1" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
-
-        <com.pineconeapps.paygenmanager.widget.MonetaryEditText
-            android:id="@+id/etDiscount"
-            android:maxLength="16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/label_discount"
-            android:inputType="number"
-            android:maxLines="1" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/etAmount"
-            android:maxLength="16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/label_amount_in_stock"
-            android:inputType="number"
-            android:maxLines="1" />
-
-    </android.support.design.widget.TextInputLayout>
+            android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/btSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:backgroundTint="@color/green_400"
-        android:text="@string/label_save"
-        android:textColor="@color/white" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_product_name"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_product_desc"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <com.pineconeapps.paygenmanager.widget.MonetaryEditText
+                    android:id="@+id/etValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_value"
+                    android:inputType="number"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <com.pineconeapps.paygenmanager.widget.MonetaryEditText
+                    android:id="@+id/etDiscount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_discount"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/etAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/label_amount_in_stock"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <FrameLayout
+                android:id="@+id/btTakePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+
+                <ImageView
+                    android:id="@+id/imPicture"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_photo_camera" />
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:backgroundTint="@color/green_400"
+                android:text="@string/label_save"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
