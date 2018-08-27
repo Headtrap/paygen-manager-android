@@ -129,16 +129,13 @@ class SalesActivity : BaseActivity() {
 
 
             val dateS = sdf.parse(startDate)
-            calendar.time = dateS
-            calendar.add(Calendar.DAY_OF_YEAR, -1)
-            val adjustedDateS = calendar.time
 
             val dateE = sdf.parse(endDate)
             calendar.time = dateE
             calendar.add(Calendar.DAY_OF_YEAR, 1)
             val adjustedDateE = calendar.time
 
-            startDate = sdf.format(adjustedDateS)
+            startDate = sdf.format(dateS)
             endDate = sdf.format(adjustedDateE)
 
             if (dateS.after(dateE)) {
