@@ -20,8 +20,7 @@
 
         <activity
             android:name=".activity.SplashActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -74,6 +73,11 @@
         <activity
             android:name=".activity.SaleDetailsActivity"
             android:label="@string/title_sale_details"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:label="@string/title_change_password"
             android:screenOrientation="portrait" />
     </application>
 

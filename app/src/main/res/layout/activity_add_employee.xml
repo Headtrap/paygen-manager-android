@@ -45,11 +45,11 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/etPin"
-            android:maxLength="16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/label_pin"
             android:inputType="numberPassword"
+            android:maxLength="16"
             android:maxLines="1" />
 
     </android.support.design.widget.TextInputLayout>
@@ -80,10 +80,10 @@
     <Button
         android:id="@+id/btSave"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:backgroundTint="@color/green_400"
         android:text="@string/label_save"
-        android:textColor="@color/white"
-        android:layout_height="wrap_content" />
+        android:textColor="@color/white" />
 
 </LinearLayout>

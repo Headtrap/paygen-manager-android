@@ -98,4 +98,12 @@
     <string name="label_thirty_days">Últimos 30 dias</string>
     <string name="label_seven_days">Útimos 7 dias</string>
     <string name="label_custom_date">Data customizada</string>
+    <string name="title_change_password">Mudar senha</string>
+    <string name="message_welcome">Bem vindo a Paygen</string>
+    <string name="title_date_filter">Defina um intervalo de data</string>
+    <string name="hint_end_date">Data fim</string>
+    <string name="hint_start_date">Data ínicio</string>
+    <string name="bt_ok">OK</string>
+    <string name="warning_invalid_date">Datas inválidas</string>
+    <string name="warning_start_end_date">Data ínicio não pode ser menor que a data fim</string>
 </resources>

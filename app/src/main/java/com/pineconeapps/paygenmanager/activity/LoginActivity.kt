@@ -61,8 +61,6 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    //TODO relatorio por data
-
     private fun handleLogin(dto: LoginDTO) {
         prefs.token = dto.token
         prefs.providerId = dto.providerId
@@ -77,7 +75,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun handleStatusPending() {
-        alert(getString(R.string.status_pending), getString(R.string.disclaimer_status_pending)) {
+        alert(getString(R.string.disclaimer_status_pending), getString(R.string.status_pending)) {
             yesButton { startActivity<ChangePasswordActivity>() }
         }.show()
     }

@@ -63,7 +63,7 @@ class AddProductActivity : BaseActivity() {
 
     private fun saveProduct() {
         if (etValue.text.isNullOrEmpty() || etDesc.text.isNullOrEmpty() ||
-                etDiscount.text.isNullOrEmpty() || etAmount.text.isNullOrEmpty()||
+                etDiscount.text.isNullOrEmpty() || etAmount.text.isNullOrEmpty() ||
                 etName.text.isNullOrEmpty()) {
             showWarning(R.string.warning_empty_fields)
             return
@@ -71,6 +71,7 @@ class AddProductActivity : BaseActivity() {
         product?.amount = (etAmount.text).toString().toLong()
         product?.description = etDesc.text.toString()
         product?.value = etValue.getValue()
+        product?.name = etValue.text.toString()
         product?.discount = etDiscount.getValue()
         product?.price = product!!.value - product!!.discount
 
@@ -149,7 +150,7 @@ class AddProductActivity : BaseActivity() {
     }
 
     private fun setupImages(response: CloudinaryResponse) {
-        product?.picture = response.url !!
+        product?.picture = response.url!!
         imPicture.load(response.url!!) { request -> request.fit() }
     }
 
