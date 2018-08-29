@@ -22,14 +22,4 @@ class Provider(var lobby: Lobby,
         ACTIVE
     }
 
-    enum class Type(var stringRes: Int) {
-        RESTAURANT(R.string.restaurant),
-        HAMBURGUER(R.string.hamburguer),
-        PIZZA(R.string.pizza);
-
-        override fun toString(): String {
-            return PaygenApplication.applicationContext().getString(stringRes)
-        }
-    }
-
 }

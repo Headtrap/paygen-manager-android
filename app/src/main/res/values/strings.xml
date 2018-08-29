@@ -106,4 +106,5 @@
     <string name="bt_ok">OK</string>
     <string name="warning_invalid_date">Datas inválidas</string>
     <string name="warning_start_end_date">Data ínicio não pode ser menor que a data fim</string>
+    <string name="all">Todos</string>
 </resources>
