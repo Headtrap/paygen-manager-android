@@ -5,12 +5,17 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.adapter.ItemAdapter
+import com.pineconeapps.paygenmanager.adapter.ItemManAdapter
 import com.pineconeapps.paygenmanager.entity.Consumption
 import com.pineconeapps.paygenmanager.entity.Customer
+import com.pineconeapps.paygenmanager.entity.Item
 import com.pineconeapps.paygenmanager.prefs
 import com.pineconeapps.paygenmanager.service.ConsumptionService
 import kotlinx.android.synthetic.main.activity_consumption.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.noButton
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.yesButton
 
 class ConsumptionActivity : BaseActivity() {
 
@@ -55,6 +60,22 @@ class ConsumptionActivity : BaseActivity() {
         )
     }
 
+    private fun removeItem(item: Item) {
+        showProgress()
+        ConsumptionService.removeItem(prefs.providerId, customer.id, item.id).applySchedulers()
+                .subscribe(
+                        {
+                            getConsumption()
+                        },
+                        {
+                            closeProgress()
+                            handleException(it)
+                        },
+                        {
+                            closeProgress()
+                        })
+    }
+
     private fun createAdapter(consumption: Consumption) {
         if (consumption.items.isEmpty()) {
             tvEmptyRecycler.visibility = View.VISIBLE
@@ -64,7 +85,15 @@ class ConsumptionActivity : BaseActivity() {
             recyclerView.visibility = View.VISIBLE
         }
 
-        val adapter = ItemAdapter(consumption.items)
+        val adapter = ItemManAdapter(consumption.items) { it ->
+            val item = it
+            alert("Tem certeza que deseja remover este item?", "Remover item")
+            {
+                yesButton { removeItem(item) }
+                noButton { }
+            }.show()
+
+        }
         recyclerView.adapter = adapter
     }
 }

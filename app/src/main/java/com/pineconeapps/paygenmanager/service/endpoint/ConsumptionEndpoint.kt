@@ -21,4 +21,9 @@ interface ConsumptionEndpoint {
     fun addItem(@Path("itemId") itemId: String,
                 @Path("providerId") providerId: String,
                 @Path("customerId") customerId: String): Observable<String>
+
+    @POST("consumption/removeItem/{itemId}/{providerId}/{customerId}")
+    fun removeItem(@Path("itemId") itemId: String,
+                @Path("providerId") providerId: String,
+                @Path("customerId") customerId: String): Observable<String>
 }

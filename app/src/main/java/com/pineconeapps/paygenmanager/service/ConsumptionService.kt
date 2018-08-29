@@ -12,4 +12,6 @@ object ConsumptionService {
             service.getConsumption(customerId, providerId)
 
     fun addItem(providerId: String, customerId: String, itemId: String) = service.addItem(providerId, customerId, itemId)
+
+    fun removeItem(providerId: String, customerId: String, itemId: String) = service.removeItem(providerId, customerId, itemId)
 }
