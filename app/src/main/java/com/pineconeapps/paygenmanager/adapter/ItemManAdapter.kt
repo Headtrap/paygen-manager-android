@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.entity.Item
 import com.pineconeapps.paygenmanager.util.StringUtils.currency
-import kotlinx.android.synthetic.main.adapter_item.view.*
+import kotlinx.android.synthetic.main.adapter_man_item.view.*
 
 class ItemManAdapter(private val items: List<Item>, var listener: (Item) -> Unit) :
         RecyclerView.Adapter<ItemManAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.adapter_item,
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.adapter_man_item,
                 parent, false)
         return ViewHolder(v)
     }

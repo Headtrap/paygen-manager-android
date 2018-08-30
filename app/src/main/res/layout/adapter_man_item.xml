@@ -29,6 +29,13 @@
             android:textSize="@dimen/item_label"
             android:textStyle="bold" />
 
+        <ImageView
+            android:paddingLeft="12dp"
+            android:id="@+id/btDelete"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight=".10"
+            android:src="@drawable/ic_delete_button" />
 
     </LinearLayout>
 

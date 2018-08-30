@@ -71,7 +71,7 @@ class AddProductActivity : BaseActivity() {
         product?.amount = (etAmount.text).toString().toLong()
         product?.description = etDesc.text.toString()
         product?.value = etValue.getValue()
-        product?.name = etValue.text.toString()
+        product?.name = etName.text.toString()
         product?.discount = etDiscount.getValue()
         product?.price = product!!.value - product!!.discount
 

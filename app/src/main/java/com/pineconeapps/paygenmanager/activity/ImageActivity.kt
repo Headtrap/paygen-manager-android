@@ -70,6 +70,7 @@ class ImageActivity : BaseActivity() {
         showProgress()
         ProviderService.setImages(ImagesDTO(urlBanner, urlLogo), prefs.providerId).applySchedulers().subscribe(
                 {
+                    prefs.picture = urlLogo
                     alert(it, getString(R.string.title_success)) { yesButton { finish() } }.show()
                 },
                 {
