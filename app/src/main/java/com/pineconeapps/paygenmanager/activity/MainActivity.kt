@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import com.pineconeapps.paygenmanager.R
 import com.pineconeapps.paygenmanager.fragment.CustomerListFragment
 import com.pineconeapps.paygenmanager.prefs
-import com.pineconeapps.paygenmanager.util.UserInfo
 import com.pineconeapps.paygenmanager.util.ImageUtil.load
+import com.pineconeapps.paygenmanager.util.UserInfo
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
